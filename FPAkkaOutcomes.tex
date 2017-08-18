@@ -1,0 +1,21 @@
+
+%\documentclass{standalone}
+%\begin{document}
+\begin{table}[!h]
+\setlength\arrayrulewidth{2pt}
+%\small
+\begin{tabular}{ |p{1.0in}|p{1in}|p{0.75in}|p{0.75in}| }
+ \hline
+%\multicolumn{4}{c}{Table 1 FP-Akka Outcomes}\\ \hline
+\textbf{Validation Outcome} &\textbf{Assertion about object validated} &\textbf{Workflow outcome label} &\textbf{Spreadsheet cell color}\\ \hline
+CORRECT & Nothing found wrong & \cellcolor{LightGreen}no change needed; looks good to us&\cellcolor{LightGreen}Green \\ \hline
+CURATED &Proposed change&\cellcolor{yellow}we have proposed this change &\cellcolor{yellow}Yellow \\ \hline
+FILLED\_IN & Proposal for a missing attribute &\cellcolor{LightGoldenrod}no value present; we have proposed one &\cellcolor{LightGoldenrod}Mustard\\ \hline
+UNABLE\_\newline DETERMINE\_\newline VALIDITY &Can’t tell whether value is valid (generally, preconditions for validation were not met).&\cellcolor{gray}don't know&\cellcolor{gray}Gray \\ \hline
+UNABLE\_\newline CURATE &Value is not validated but workflow can’t suggest a change&\cellcolor{red}there seems to be a problem, but we don't know how to solve it&\cellcolor{red}Red \\ \hline
+\end{tabular}
+%{FP-Akka Outcomes}% \tablefootnote{See Table \ref{ExampleQCAssertions} }} %\ref{ExampleQCAssertions} } 
+\caption{FP-Akka Outcomes}% %{FP-Akka Outcomes \footnotemark\footnotetext{See foo} } 
+\label{FPAkkaOutcomes}
+\end{table}
+%\end{document}
