@@ -1,8 +1,8 @@
+%% Table showing MCS data sample
 \begin{table}[!b]
 \setlength\arrayrulewidth{2pt}
 \small
-%%%\begin{table}[b]
-\begin{tabular}{|p{.6in} |p{.55in}|p{.75in}|p{2.5in}| } 
+\begin{tabular}{|p{.6in} |p{.55in}|p{.75in}|p{3.75in}| } 
 \hline
 \textbf{Catalog Number}&\textbf{Validator} &\textbf{Outcome} &\textbf{Provenance}\\ \hline 
 27366& EventDate & \cellcolor{LightGreen}no change needed; looks good to us &
@@ -13,18 +13,6 @@ Unable to construct eventDate from atomic fields. \textbar eventDate is in ISO f
 %provenance
 Atomic fields for scientific name are blank, nothing to compare with scientific name. \textbar Didn't find name in IPNI. \textbar Found a name Sassacus vitis (Cockerell, 1894) which is in the same lexical group as the searched scientific name and claimed by GNI to be in IPNI but failed to find this name in IPNI. \textbar No match found in IPNI with failover to GNI. \textbar  \textbar The provided name: Sassacus vitis has a match in the GlobalNames Resolver \textbar Didn't find name in IPNI. \textbar Found a name Sassacus vitis (Cockerell, 1894) which is in the same lexical group as the searched scientific name and claimed by GNI to be in IPNI but failed to find this name in IPNI. \textbar No match found in IPNI with failover to GNI. \textbar Can't find the scientific name and authorship by searching the lexical group in GNI. \textbar Got a valid result from GBIF checklistbank Backbone \textbar The original SciName and Authorship are curated \textbar  Authorship: Author Dissimilar Similarity: 0.7333333333333333
 \\ \hline
-\end{tabular}
-\caption{Continued On Next Page}
-\label{ExampleQCAssertions} 
-\end{table}
-
-\begin{table}[t]
-\setlength\arrayrulewidth{2pt}
-\small
-%Table2 continued
-\begin{tabular}{|p{.6in} |p{.55in}|p{.75in}|p{2.5in}| } 
-\hline
-\textbf{Catalog Number}&\textbf{Validator} &\textbf{Outcome} &\textbf{Provenance}\\ \hline 
 62740&Scientific\newline Name  &\cellcolor{LightGoldenrod}no values present; we have proposed one &
 %provenance
 Atomic fields for scientific name are blank, nothing to compare with scientific name. \textbar Didn't find name in IPNI. \textbar Found a name Latrodectus Walckenaer, 1805 which is in the same lexical group as the searched scientific name and claimed by GNI to be in IPNI but failed to find this name in IPNI. \textbar No match found in IPNI with failover to GNI. \textbar  \textbar The provided name: Latrodectus has a match in the GlobalNames Resolver \textbar Didn't find name in IPNI. \textbar Found a name Latrodectus Walckenaer, 1805 which is in the same lexical group as the searched scientific name and claimed by GNI to be in IPNI but failed to find this name in IPNI. \textbar No match found in IPNI with failover to GNI. \textbar Can't find the scientific name and authorship by searching the lexical group in GNI. \textbar Got a valid result from GBIF checklistbank Backbone \textbar The original SciName and Authorship are curated \textbar  Authorship: Author Added Similarity: 0.0
@@ -37,14 +25,7 @@ Both longitude and latitude are missing in the incoming SpecimenRecord
 dwc:eventDate does contain a value. \textbar dwc:eventDate is not consistent with atomic parts (1985-06-06 <> [0][null][][][]) \textbar dwc:verbatimEventDate parses to the same value as dwc:eventDate.
 \\\hline
 \end{tabular}
-\caption{(Table 2 Continued)}
+\caption{(Example QC Assertions)}
+\label{ExampleQCAssertions}
 \end{table}
-\newpage
 
-%\label{ExampleQCAssertions} 
-%%
-%%\endlastfoot
-%%\end{tabular}
-%%%\caption{ExampleQCAssertions}
-%%\label{ExampleQCAssertions} 
-%%\end{table}

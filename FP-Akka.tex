@@ -76,7 +76,7 @@ These concerns can all be discussed under the rubric of data Quality Control (QC
 In the first few decades of natural science collection digitization the emphasis was on careful, rich transcription of all of the details of paper records associated with specimens.  In the 1990s, recognition arose that specimens were entering collections at a faster rate than digital records could be created with such detail and high data quality. Hence, particularly in recent large scale digitization (e.g. \citep{ADBC} and \citep{Haston2012}), focus has shifted to rapid transcription of fewer data elements, with an emphasis on making dark data accessible \citep{ZooKeys209,Smith2012}.
 %%%Thus attention often turns first to the creation of adequate minimal electronic records from paper records for some research uses of the data and ready electronic discovery of the paper records for other research uses.  
 %\textbf{PJM: RAM made citation of Haston2012 less specific, and took out reference to funding. But it is still a confusing final sentence}
-%%% Mumble heare about workflow
+%%% Mumble here about workflow?
   \section{Shifting historical foci of concern}
 As Chapman pointed out over 10 years ago \citep{chapman_principles_2005}, Quality Control of biotic occurrence data shares many QC concerns with those of other science disciplines and those of manufacturing. 
 In the context mentioned above, we could recast Radford's preface as:
@@ -160,8 +160,7 @@ Also in the output are the original values for the scientific name and scientifi
 This format provides a very effective tool for database managers, since a text pattern matching utility such as \emph{grep} \citep{wikiGrep}
 can isolate lines that contain a particular QC assertion.  Each line contains the input value of the database primary key along with an assertion of a GUID found for the matched name in the specified authority. Hence, regular expression tools can readily convert a set of lines into SQL update statements that can be fired against the database to add the GUID to validated records (identfied by their database primary key).  For example, the output line: 
 \begin{quotation}\noindent\texttt{``62740'',``Scientific Name Authorship was empty'',``changed to: Walckenaer, 1805''}\end{quotation}
-%%%\\\noindent``urn:lsid:ipni.org:names:103307-1'',``Valid'',``'',``'',''\textbar can't construct sciName from atomic fields \textbar The scientific name and authorship are correct.  Exact Match \textbar Found name in IPNI. \textbar  Authorship: Exact Match Similarity: 1.0''.} \end{quotation}
-from Table \ref{ExampleQCAssertions} is easily tranformed into the SQL query 
+from Table \ref{ExampleQCAssertions} is easily transformed into the SQL query 
 \begin{quotation}\noindent\texttt{``update taxon set SciName = `Latrodectus Walckenaer, 1805' where taxonid = 62740''.}\end{quotation}
 Likewise grep can identify particular kinds of problems found in the dataset and the corresponding rows can be put into a spreadsheet and sent, as a trackable unit of work, to collection management staff for evaluation and correction of the relevant database records.
 
@@ -172,8 +171,6 @@ Likewise grep can identify particular kinds of problems found in the dataset and
 
 Some Darwin Core attributes have both an atomic form comprising several components and a federated form conforming to some data standard or authority.  For example a record set may have values for the year, month and day of the collection event, and also a value for dwc:eventDate comprising a date string compliant to the DwC-recommended ISO 8601 date standard \citep{iso_iso_2004}. 
 The FP-Akka DateValidator can compare an ISO 8601 date constructed from the three atomic fields to that given by (or missing from) dwc:eventDate.
-% REMOVED: make suggestions about how to deal with a disparity if one exists {IT CAN???}. 
-
 
 Each validator produces its assertions as one of five outcomes along with provenance information, i.e., information about how and why the validator came to make those assertions. Of particular provenance interest is the authority for the outcome, including well-known authority servers and caches that a particular configuration may support.  For example, a user who knows that the  input  comprises entirely plant data can arrange to consult specific plant-centric taxonomic name authorities such as the International Plant Names Index (IPNI) \citep{ipni_international_2012}. 
 %DROPPED BY RAM in QC16 textbf{\We should drop this bit about the list of botanists or move it elsewhere, authority is specified only for scientific name validation, and has no linkage to event date validation, the list of botanists also contains people who have worked on fungi and non-vascular plants, so the discussion is much more complex than just ipni=botanist list ok. Such a user can put credence on the biographical data found in the Harvard List of Botanists used to validate collection event dates as mentioned earlier.  By default, the List of Botanists is always consulted, so it always important for event date validation provenance to clearly remark that the Harvard List was consulted and what assertions were deduced therefrom.  We are unaware of biographical services suitable for collectors of other groups, nor any service more general than the Botanists List. [PAUL SAYS: Unaware isn't right, we know of library data on authors, Kew has relevant services, etc.]}
@@ -212,7 +209,7 @@ The entries in Table \ref{ExampleQCAssertions} were derived from actual data pro
 Curation status outcome phrases like these may be adequate for an analytical user of a large data set to include/exclude records that fit particular data quality criteria.  They are, however, inadequate for a data curator assessing whether to apply the change proposed along with an outcome of CURATED to the database of record, or whether or not to expend effort to research further data needed to resolve a record with an outcome of UNABLE\_CURATE.  For these users, the details of the provenance in the list of sources consulted and the chain of assertions in the curation comment is critical.  
 
 In Table  \ref{ExampleQCAssertions}
-we illustrate examples of QC assertions extracted from a spreadsheet produced from an actual dataset at the Harvard Museum of Comparative Zoology (MCZ).
+we illustrate examples of QC assertions extracted from a spreadsheet produced from an actual dataset at the Harvard Museum of Comparative Zoology (MCZ)
 \footnote{See Appendix MCZData.} processed by FP-Akka and subjected to the Java postprocessor that turns the JSON into a spreadsheet. 
 The extractions are from several of the six sheets in the outputs of  the postprocessor runs
 % against FP-Akka applied to three datasets given as Darwin Core Archives. 
