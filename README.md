@@ -11,7 +11,7 @@ Install a latex package that contains pdflatex.  One such latex package is TexLi
 a. In the directory you pulled this git project, do
    pdflatex FP-Akka.tex
 If pdflatex completes, do
-   bibtex bib1.bib
+   bibtex FP-Akka.aux
 If pdflatex does not complete, you have fatal LaTex errors in one of the TeX files.
 b. If bibtex completes, repeat
    pdflatex FP-Akka.tex
