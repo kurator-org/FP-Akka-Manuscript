@@ -55,6 +55,7 @@
 
 \usepackage{hyperref}
 \usepackage[titletoc]{appendix}
+\usepackage{microtype}
 
 \begin{document}
 \title{Flags are not enough: A friendly spreadsheet user interface for Quality Control of occurrence data.}
@@ -176,7 +177,7 @@ Each validator produces its assertions as one of five outcomes along with proven
 %DROPPED BY RAM in QC16 textbf{\We should drop this bit about the list of botanists or move it elsewhere, authority is specified only for scientific name validation, and has no linkage to event date validation, the list of botanists also contains people who have worked on fungi and non-vascular plants, so the discussion is much more complex than just ipni=botanist list ok. Such a user can put credence on the biographical data found in the Harvard List of Botanists used to validate collection event dates as mentioned earlier.  By default, the List of Botanists is always consulted, so it always important for event date validation provenance to clearly remark that the Harvard List was consulted and what assertions were deduced therefrom.  We are unaware of biographical services suitable for collectors of other groups, nor any service more general than the Botanists List. [PAUL SAYS: Unaware isn't right, we know of library data on authors, Kew has relevant services, etc.]}
 Specialist knowlege of scope of the external resources consulted is important.  IPNI is an authority on the nomenclature of vascular plants, but currently does not have strong coverage of non-vascular plants, or fungi (which are also covered by the botanical code of nomenclature, ICNafp \citep{ICNafp2012}.  Under the current architecture of FP-Akka, a holder of a botanical data set would have to make an informed choice about selection of IPNI or IndexFungorum (IF) \citep{IF_2015} based on their knowlege of the taxonomic scope of their data.  
 %\pagebreak
-\section{Outcome Values}
+%\section{Outcome Values}
 \include{FPAkkaOutcomes} %Table of outcomes
 The data quality control logic (in FP-KurationServices classes as shown in Figure \ref{fig:architecture}) returns a validation state (for the evaluation of a particular set of fields for a particular record), with one of five values.  These are passed on to the intermediate JSON as one of five strings (``Validation Outcome'' column in Table \ref{FPAkkaOutcomes}).  These values are “CORRECT”, “FILLED\_IN”, “CURATED”, “UNABLE\_DETERMINE\_VALIDITY”, and “UNABLE\_CURATE”
 \footnote{See also Table \ref{ExampleQCAssertions} for examples derived from the postprocessor.}.
