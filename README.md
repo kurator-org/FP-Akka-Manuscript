@@ -4,6 +4,7 @@ Draft and resources for manuscript about FP-Akka
 Known to compile with pdflatex with texlive installation
 Known to NOT compile with pdftex with texlive installation
 
+
 1. Install pdflatex:
 Install a latex package that contains pdflatex.  One such latex package is TexLive. To install TexLive on Ubuntu or Debian you can follow http://xmodulo.com/how-to-install-latex-on-ubuntu-or-debian.html. For Windows see https://www.tug.org/texlive/acquire-netinstall.html.  TeXLive  contains bibibtex, the bibliography application.
 
