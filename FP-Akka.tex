@@ -58,9 +58,10 @@
 \usepackage{microtype}
 
 \begin{document}
+\include{Authors}
 \title{Flags are not enough: A friendly spreadsheet user interface for Quality Control of occurrence data.}
+\date{\vspace{-5ex}} %hack to remove date
 \maketitle
-\author{Morris, Morris, Lowery, Song}
 \begin{abstract}
 An analytical consumer of large natural science collections data sets may be satisfied with data quality reports that allow inclusion or exclusion of subsets of the data from analysis based on some fitness for purpose criteria.  A data curator, however, will much more likely need more information concerning the provenance of data quality assertions in order to rationally act on those assertions to improve the quality of their data set, by some data quality criteria and measures.  We describe a friendly, spreadsheet-based data quality report produced by tools developed by the FilteredPush and Kurator projects. The structure of the report is influenced by the needs of data curators and data users.  The report is in the form of a multi-sheet spreadsheet containing a summary sheet and sheets reporting the details of data quality for particular conceptual operations on the data (e.g. georeference validation).  The detailed report sheets include flags to assert the status of each row of data, original data and proposed corrections. Also included are a list of external sources that were consulted in the evaluation of each row, and a human readable comment that reflects a provenance trace through the internal logical steps taken by the data quality software.  
 %We also discuss expectation management of consumers of data quality reports in the light of data quality assertions in those reports reflecting defects in the data, the software, or consulted services.
