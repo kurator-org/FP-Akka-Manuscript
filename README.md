@@ -9,10 +9,11 @@ Known to NOT compile with pdftex with texlive installation
 1. Install pdflatex:
 Install a latex package that contains pdflatex.  One such latex package is TexLive. To install TexLive on Ubuntu or Debian you can follow http://xmodulo.com/how-to-install-latex-on-ubuntu-or-debian.html. For Windows see https://www.tug.org/texlive/acquire-netinstall.html.  TeXLive  contains bibibtex, the bibliography application.
 
-2. run pdflatex: 
-  1. In the directory you pulled this git project, do `pdflatex FP-Akka.tex` If pdflatex completes, do `bibtex FP-Akka.aux`
-If pdflatex does not complete, you have fatal LaTex errors in one of the TeX files.
-  2. If bibtex completes, repeat `pdflatex FP-Akka.tex` TWICE
+2. run pdflatex:
+
+   1. In the directory you pulled this git project, do `pdflatex FP-Akka.tex` If pdflatex completes, do `bibtex FP-Akka.aux` If pdflatex does not complete, you have fatal LaTex errors in one of the TeX files.
+
+   2. If bibtex completes, repeat `pdflatex FP-Akka.tex` TWICE
 
 ```bash
 pdflatex FP-Akka.tex
