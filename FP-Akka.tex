@@ -91,9 +91,9 @@ In the context mentioned above, we could recast Radford's preface as:
 %{Depending on when Allan submits a paper with analysis of FP-Akka, should perhaps cite here, but agreed not yet...ram}
 % Do need to cite Veiga, A.K., A.M. Saraiva, A.D. Chapman, P.J. Morris, C. Gendreau, D. Schigel, T.J. Robertson  2017 A conceptual framework for quality assessment and management of biodiversity data.  PLOS One https://doi.org/10.1371/journal.pone.0178731
 
-  Albeit with some resistence \citep{ShetlerDemyth1974}, natural science collections digitization began in earnest in the 1970s (e.g. with SELGEM \citep{SELGEM1971}; CITE NSF reports), with a prescient vision (CITE, malacology standard?) of the power for research of data exchanged and aggregated across all collections. Chronicaling the history of computerization at the Berkeley Museum of Vertrate Zoology, Sunderland \citep{Sunderland2013150} relates that institutions had already noticed that the costs associated with mainframe computing didn't justify systems devoted only to cataloging specimens. Computers would also have to support the storage and discovery of scientific knowledge as well.  
+Within the TDWG data quality interest group, a conceptual framework for describing data quality needs, solutions, and reports has been developed \cite{Veiga2017}.   This framework derives from Wang's approach and provides a formal structure for describing data quality needs, data quality mechanisms, and data quality reports.  The present work relates to the data quality reports of the framework, and can be presented in terms of the framework ** TODO: CITE github projects  **
 
-In the 1980s, there was widespread recognition that this long term vision of data interchange needed common understanding of concepts and vocabularies across collections and documents.  Influential models for common concepts emerged in the late 1980s and early 1990s, in particular the ASC model \citep{ASC1992}, and early versions of HISPID \citep{HISPID5} and ABCD \citep{ABCD2015}.  In 1985, the Taxonomic Databases Working Group (TDWG) emerged as a forum for global standardization efforts in the domain \citep{tdwg_tdwg_2007}. (Although the acronym remains in wide use, the organization is a body now named Biodiversity Information Standards (TDWG)).  An emphasis of TDWG in the 1980s and 1990s was the development of controlled vocabularies to promote the exchange and integration of taxonomic data.
+  Albeit with some resistence \citep{ShetlerDemyth1974}, natural science collections digitization began in earnest in the 1970s (e.g. with SELGEM \citep{SELGEM1971}; ** TODO: CITE NSF collections computerization reports **), with a prescient vision (** TODO: CITE, malacology standard **) of the power for research of data exchanged and aggregated across all collections.  In the 1980s, there was widespread recognition that this long term vision of data interchange needed common understanding of concepts and vocabularies across collections and documents.  Influential models for common concepts emerged in the late 1980s and early 1990s, in particular the ASC model \citep{ASC1992}, and early versions of HISPID \citep{HISPID5} and ABCD \citep{ABCD2015}.  In 1985, the Taxonomic Databases Working Group (TDWG) emerged as a forum for global standardization efforts in the domain \citep{tdwg_tdwg_2007}. (Although the acronym remains in wide use, the organization is a body now named Biodiversity Information Standards (TDWG)).  An emphasis of TDWG in the 1980s and 1990s was the development of controlled vocabularies to promote the exchange and integration of taxonomic data.
   
 %Not wholly correctly,
 Somewhat inaccurately,
@@ -108,7 +108,8 @@ TDWG collaborates with the Global Biodiversity Information Facility (GBIF), an i
 At this writing, GBIF's data portal aggregates almost 625 million occurrence records of over 1.6 million species. These records are aggregated and indexed over 29,000 datasets published by 821 data publishers worldwide. GBIF produces software tools and components, notably several for producing and managing Darwin Core Archives (see \citep{GBIF_DWCA}), that are capable of publishing occurrence data coded to TDWG's Darwin Core (DwC) controlled vocabulary \citep{wieczorek_darwin_2012, tdwg_darwin_2015}. 
 These document both specimens and unvouchered observations. The latter are growing faster in number. For example, as of October 11, 2016, GBIF serves nearly four times as many observation records as specimen records, compared to a factor of three a year earlier.
 
-Following common conventions, if a vocabulary term is defined in DwC we will preface it with “dwc:”. 
+Chronicaling the history of computerization at the Berkeley Museum of Vertrate Zoology, Sunderland \citep{Sunderland2013150} relates that institutions had already noticed that the costs associated with mainframe computing didn't justify systems devoted only to cataloging specimens. Computers would also have to support the storage and discovery of scientific knowledge as well.  
+
 \section{Assertions vs “facts”}
 For over a century, practicing taxonomists have agreed that classification and description of biotic occurrences often involves professional opinions that are subject to revision and dispute:
 \begin{quotation}
@@ -117,9 +118,9 @@ For over a century, practicing taxonomists have agreed that classification and d
 
 For this and other reasons, many artifacts of taxonomic data Quality Control are themselves represented as assertions about fitness for use, not necessarily affirmation or denial of factual correctness. Simple cases are the logical correlation between several data attributes sometimes assembled by the FilteredPush (FP) \citep{filteredpushWeb_2016} project's workflows. For example, in cases where we have access to services giving biographical data of collectors (e.g., the machine-accessible service Harvard Index of Botanists \citep{harvard_university_herbaria_&_libraries_index_2013}, the workflow components may query such services to examine the lifespan of the names of the collectors named in the “dwc:recordedBy” attribute. If the collection date falls outside these lifespans, the workflow can only assert that the biographical and collection data cannot simultaneously be correct. This leaves it to the workflow user to decide which, if either, should be deemed correct and what to do about this. More technical details of the FP workflow components are to be found in \citep{song_towards_2014}.  
 
-In this paper, we are principally concerned with a friendly spreadsheet-based user interface aimed at helping data curators and other users evaluate the fitness for use of FilteredPush QC assertions generated by the Java-based application that we call \emph{FP-Akka}. 
-%\textbf{Generality of applicability. Where does sentence below belong?} 
-Most of the FP-Akka components assume that the input occurrence data are coded with attributes named, except for case sensitivity,  by the Darwin Core term names.
+\footnote{Following common conventions, if a vocabulary term is defined in DwC we will preface it with “dwc:”.}
+
+In this paper, we are principally concerned with a friendly spreadsheet-based report format aimed at helping data curators and other users evaluate the fitness for use of FilteredPush QC assertions generated by the Java-based application that we call \emph{FP-Akka} ** TODO: CITE **, and related assertions produced by the Kurator-Akka ** TODO: CITE ** application.
 
 
 
@@ -145,11 +146,13 @@ FP-Akka presently supports five principal data quality actors which are put toge
 These actors, which we call ``validators,'' are the ScientificNameValidator, the EventDateValidator, the DateValidator
 %\footnote{explain date stuff},
 \footnote{See, e.g. http://rs.tdwg.org/dwc/terms/\#Event for date forms available to the EventDateValidator and http://rs.tdwg.org/dwc/terms/\#Taxon for some data available to the ScientificNameValidator.}
- the GeoReferenceValidator, and the BasisOfRecordValidator.   
+ the GeoReferenceValidator, and the BasisOfRecordValidator.  In terms of the Fittness For Use Framework, these actors assert a mixture of measures, validations, and enhancements.  
 %These actors may have unique or multiple  Darwin Core attributes in appropriately coded occurrence data, e.g. Darwin Core Archives 
 The validators act on appropriately coded occurrence data, e.g. Darwin Core Archives 
 (\citep{robertson_dwca_2015}) 
  or simple comma separated values (CSV \citep{ietf4180})-coded text files.
+Most of the FP-Akka components assume that the input occurrence data are in the form of flat DarwinCore and are coded with attributes named, except for case sensitivity, by the Darwin Core term names.
+In Kurator-Akka, we have developed workflows, derived from the VertNet migrator tools, for aiding in the mapping of local data storage terms onto Darwin Core terms (Darwin Cloud), but in FP-Akka, this mapping was left as an exercise for the data provider.
 For example, the ScientificNameValidator can make QC assertions about dwc:scientificName and about the authorship of a name (dwc:scientificNameAuthor).  The actors in FP-Akka consist almost entirely of code that manages the flow of data and data quality assertions through the workflow.  All of the business logic of data quality control is separated into classes in the FP-KurationServices module.   The FP-Akka actors are composed into workflows.  Three workflows are in current production use in FP-Akka. The first is the standalone \emph{DwCa workflow} that takes DarwinCore data in the form of CSV files or DarwinCore archives and passes it through 
 %the ScientificNameValidator, DateValidator, GeoreferenceValidator, and BasisOfRecordValidator 
 the validator, and then writes the intermediate JSON output to a file. 
