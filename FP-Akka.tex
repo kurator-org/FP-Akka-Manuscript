@@ -304,7 +304,8 @@ An ongoing issue faces users of FP-Akka in the form of some non-deterministic re
 
 A critical next step for the Kurator project is rendering data quality reports to show unique instances of errors, where unique instances often correspond with values in a single value in a row in a relational database table – a single value that has been expanded out to multiple repeating values in the exported flat DarwinCore view of the data.  
 
-Using FFDQ, a report like this could be modeled as a MultiRecord or Dataset level assertion. Another example using FFDQ is a report that shows the percentage of records that satisfy some set of validations before and after the amendments stage.
+Using FFDQ, a report like this could be modeled as a MultiRecord (Dataset) level assertion. Another example using FFDQ is a report that shows MultiRecord level Measures reporting on the percentage of records that satisfy some set of Single Record validations before and after the amendments stage.  
+In FP-Akka, our reports were compilations of record-level (Single Record in the FFDQ sense) assertions, and dataset level assertions are treated as statistical compilations over those record-level assertions.  FFDQ is more general and richer, in that it can describe dataset level measures that aggregate over tests on single records.  
 
 % David has replacement proposal for this:
 %At this writing we are refactoring FP-Akka to  exploit the Akka framework in full.  When that is complete, users of FP-Akka can exploit inexpensive cloud computing using hundreds of computer cores and expect hundreds-fold speedup in computing.  This is especially true because the business logic of FP-Akka is small and fast, whether the data is small or big.   
@@ -365,6 +366,7 @@ $cos(458.797)$ hence was driven negative and so was the term containing that fac
 A key point in this realization of where defects may lie is expectation management for the end users - things we report as errors may be defects in their data, defects in our code, or defects in the authorities our workflows are consulting.  Users to whom the data quality report is presented without this understanding may observe what they percieve as errors in the data quality report. They might dismiss the reporting framework as defective, unless they understand that their data may expose errors in the framework that the developers can readily fix, or that the errors are in the external authoritative sources that the software consulted.  
 
 FFDQ provides more descriptive metadata about the tests performed through the concepts Specification, Criteria, Enhancement and Dimension. This information can be included or linked to results in the spreadsheet to provide additional background information about the expected behavior of test. Also related is work done to standardize tests since the  assertions can be linked to a standard definition of tests that users will be familiar with.
+In FP-Akka, these metadata are buried in (marginally) human readable form in curation comments, rather than being exposed as metadata that can easily be tied to elements in an report.  FFDQ allows for a report to be provided about the tests themselves.  A typical user question is "what is this test doing", or "what fields are required for this test".  FP-Akka's large and complex actors bury this information in comments.  FFDQ allows provision of this information as queriable test metadata.
 
 \section{Acknowledgements}
 The SCAN curators and participants in Kurator workshops who have reviewed FP-Akka QC reports on their data.  
