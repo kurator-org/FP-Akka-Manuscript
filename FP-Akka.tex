@@ -186,6 +186,10 @@ Specialist knowlege of scope of the external resources consulted is important.  
 %\section{Outcome Values}
 \include{FPAkkaOutcomes} %Table of outcomes
 The data quality control logic (in FP-KurationServices classes as shown in Figure \ref{fig:architecture}) returns a validation state (for the evaluation of a particular set of fields for a particular record), with one of five values.  These are passed on to the intermediate JSON as one of five strings (``Validation Outcome'' column in Table \ref{FPAkkaOutcomes}).  These values are “CORRECT”, “FILLED\_IN”, “CURATED”, “UNABLE\_DETERMINE\_VALIDITY”, and “UNABLE\_CURATE”
+
+FFDQ expands upon this set to provide a richer set of outcomes classified by assertion type (validation, measure, amendment). Additionally, since the framework is focused more on the individual assertions rather than the actor logic as a whole, monolithic actors can be broken down into a series of assertions or tests, the dependencies between these tests and the test outcomes.
+%In FFDQ the value "CORRECT" corresponds to a status of "COMPLIANT" or "NON_COMPLIANT" for a Validation, "FILLED_IN" and "CURATED" are associated with Amendments. Two additional outcomes are included for Measures, "COMPLETE" or "INCOMPLETE" and the "UNABLE_DETERMINE_VALIDITY" and "UNABLE_CURATE" outcomes apply to all three assertion types.
+
 \footnote{See also Table \ref{ExampleQCAssertions} for examples derived from the postprocessor.}.
 An assertion that a value is correct is a claim that the data quality control logic found no inconsistency between the data presented and any oracles that it consulted.  
 This may mean that the data was validated, as in the case of the ScientificNameValidator finding a single exact match for a scientific name string and authorship in IPNI, and being able to assert IPNI's LSID for the matching IPNI nomenclatural record.
@@ -193,8 +197,9 @@ CORRECT may also mean that the data was merely consistent, as in the case of the
 
 An assertion that the outcome was FILLED\_IN represents an orthogonal concern that we have not untangled in the FP-Akka development (but are addressing in ongoing Kurator project development \citep{Kurator_wiki_2016}).  That is, a dwc:eventDate may have been empty, but a dwc:day, dwc:month, and dwc:year may have allowed us to construct an event date and compare it with any known collection dates for the collector.  An assertion about the comparison of the dwc:eventDate with the collector's lifespan is an orthogonal concern to our having filled in dwc:eventDate from related data elements.  This orthogonality highlights a defect in FP-Akka in that it can only present a single outcome for a given data record. 
 
-An assertion that the outcome was CURATED is that the data quality code has found an inconsistency between the data and an oracle, and is proposing a correction based on the value from the oracle.  If we have been careful in the interpretation of results returned from external authoritative services, and if those services themselves are accurate, then this proposed correction is probably reasonable.  Proposed corrections of scientific names have posed the greatest challenge here.  Scientific name authorities can vary in quality, and if selected, can return values that knowledgeable users consider to be incorrect. 
+With FFDQ we can model this as two assertions, a Validation with a result of NON\_COMPLIANT that leads to an Amendment with result FILLED\_IN. Another added benefit is the ability to identify results at different stages of QC. Using the previous example, the additional information that could be included would be the state of the validation prior to accepting the proprosed change, NON\_COMPLIANT in the pre-enhancement stage, and the state of the same validation run as though the filled in values had been accepted, COMPLIANT in the post enhancement stage.
 
+An assertion that the outcome was CURATED is that the data quality code has found an inconsistency between the data and an oracle, and is proposing a correction based on the value from the oracle.  If we have been careful in the interpretation of results returned from external authoritative services, and if those services themselves are accurate, then this proposed correction is probably reasonable.  Proposed corrections of scientific names have posed the greatest challenge here.  Scientific name authorities can vary in quality, and if selected, can return values that knowledgeable users consider to be incorrect. 
 
 An assertion that the outcome was UNABLE\_DETERMINE\_VALIDITY can result from a precondition for the evaluation not being met. 
 Examples include scientific name validation for a record that lacks a dwc:scientificName and dwc:scientificNameAuthorship, or an orthogonal concern that the execution hasn't yet untangled, or a failure of an external service to respond to a query from the data quality code.
@@ -232,6 +237,9 @@ The rows of Table \ref{ExampleQCAssertions} are color coded\footnote{The precise
 
 The Provenance column in Table \ref{ExampleQCAssertions} provides machine-produced provenance of the workflow. (It is denoted ``Curation Comment'' in the JSON rendering.) 
  Notice that in most rows, the provenance trace comprises several issues, separated by vertical bars.  This arises from the presence in the JSON of a single Curation Comment element in the interface between the actor internals and the actor.  The internal data quality control logic appends assertions to the Curation Comment as it works through the validation process for the provided elements of a record. 
+
+With FFDQ, comments in the provenance trace can be associated with individual assertion tests that make up the actor as a whole. A more structured representation of the provenance, as a graph of interdependent assertions that correspond to granular tests also makes it easier to identify the code implementing the tests.
+
 The sequence of statements in the Provenance reflects the sequence of the internal logic of the quality control code (e.g. Figure \ref{fig:actorlogic}).
 % ``Figure 3'' This is a reference to a flow chart from the FilteredPush wiki, from one of the validation pages.
 %The first two and the last rows of the table come from the same dataset, which was extracted directly from a Darwin Core Archive  served by the Biodiversity Data Journal for the online version of a published article \citep{miller_spider_2013}. 
@@ -270,7 +278,7 @@ In Kepler-Kuration, users were able to examine the curation status for an actor 
 provenance graph of the flow of data through the workflow \citep{dou_kurator_2012}.   
 We observed that natural science collection managers and other biodiversity users of the workflow found the provenance graph too detailed about the Kepler provenance.  They likewise found the very brief report added as columns to a single spreadsheet row for each record in a data set was  not rich enough in domain assertions.  We thus moved to a much more detailed per-record, per-actor data structure and began expanding the assertions made by the QC code in the course of the analysis.  Presentation of this richer QC report presented the challenge described next, along with a solution modeled by a spreadsheet.
 
-
+Reports expressed using FFDQ expand the single row per record format to include a list of all tests performed per record. The format of this spreadsheet models each record as a block of one or more rows of assertion test results per actor. 
 
 \section{Why a spreadsheet?}
 
@@ -296,6 +304,8 @@ An ongoing issue faces users of FP-Akka in the form of some non-deterministic re
 
 A critical next step for the Kurator project is rendering data quality reports to show unique instances of errors, where unique instances often correspond with values in a single value in a row in a relational database table – a single value that has been expanded out to multiple repeating values in the exported flat DarwinCore view of the data.  
 
+Using FFDQ, a report like this could be modeled as a MultiRecord or Dataset level assertion. Another example using FFDQ is a report that shows the percentage of records that satisfy some set of validations before and after the amendments stage.
+
 % David has replacement proposal for this:
 %At this writing we are refactoring FP-Akka to  exploit the Akka framework in full.  When that is complete, users of FP-Akka can exploit inexpensive cloud computing using hundreds of computer cores and expect hundreds-fold speedup in computing.  This is especially true because the business logic of FP-Akka is small and fast, whether the data is small or big.   
 %It's this:
@@ -319,6 +329,7 @@ Performance testing suggests refactoring our existing actors to be more granular
 
 FP-Akka also supports a second use - evaluating and cleaning taxonomic authority tables in natural science collection databases in comparison with external authorities.  FP-Akka-workflowstarter can be invoked using a ``CSV'' workflow with a switch that runs a workflow that includes only a CSV reader, the scientific name validation actor, and a CSV writer.  This workflow is designed to take a dump of data from a taxon authority table, run it against a specified authority, and produce a simple flat report from which records with particular outcomes can be selected to either send to a taxonomically knowlegable collections management staff member to evaluate and correct in the database, or which can be converted (easily with grep/sed/awk) into sql update commands that can be fired against the taxonomic authority table in the database of record.  Figure \ref{fig:largerprocesses} contrasts two ways in which FP-Akka can be incorporated into data quality processes by curators of a natural science collections database of record.
 
+An alternative implementation that serializes the concepts in an RDF graph and uses SPARQL queries to generate reports as some set of assertions enables us to write a single postprocessor capable of generating a wide variety of reports. In some cases, depending on a particular use case, users may only be interested in a subset of the tests performed by an actor. In other cases a user may only be interested in a subset of the outcomes such as the actionable items only.
 
 \begin{figure}[h]
 \includegraphics[width=\textwidth]{FP-Akka-externaldataflowpaths.png}
@@ -352,6 +363,9 @@ For the first of these points, the spherical trigonometry function $haversine$ h
 $cos(458.797)$ hence was driven negative and so was the term containing that factor. To get a great circle distance in km between the two points, this term is fed to the square root function $sqrt$ thence to the arctangent function $atan2$ with corresponding erroneous longitude. But the square root of a negative number is not a real number, so $sqrt$ returns the Java numeric constant NaN (``Not a Number'').  Subsquently NaN is passed to $atan2$ which returns $0$ on these NaN's to compute the great circle distance.  Thus  $(458.797,139.468)$ and $(45.87556, 13.9468)$ are the same point in the face of our coding error.  The unit test asked the method to calculate the distance from the equator to 1 degree North, and the distance from one point on the equator to one degree West of that point.  In both cases, a zero value was passed in to be multiplied by the results of the sine and cosine functions that were handed degrees instead of radians, causing the error to go away and for these narrow cases, for a correct result to be returned.  A unit test (now present) that asked for the distance between two arbitrary points on the surface of the earth, neither on the equator or Greenwich meridian, would have failed.  Thus, the issue had nothing to do with the Geolocate service. The current release of FP-Akka has correct code.
 
 A key point in this realization of where defects may lie is expectation management for the end users - things we report as errors may be defects in their data, defects in our code, or defects in the authorities our workflows are consulting.  Users to whom the data quality report is presented without this understanding may observe what they percieve as errors in the data quality report. They might dismiss the reporting framework as defective, unless they understand that their data may expose errors in the framework that the developers can readily fix, or that the errors are in the external authoritative sources that the software consulted.  
+
+FFDQ provides more descriptive metadata about the tests performed through the concepts Specification, Criteria, Enhancement and Dimension. This information can be included or linked to results in the spreadsheet to provide additional background information about the expected behavior of test. Also related is work done to standardize tests since the  assertions can be linked to a standard definition of tests that users will be familiar with.
+
 \section{Acknowledgements}
 The SCAN curators and participants in Kurator workshops who have reviewed FP-Akka QC reports on their data.  
 Brendan Haley and Adam Baldinger in the MCZ who have reviewed FP-Akka QC reports on their data.
