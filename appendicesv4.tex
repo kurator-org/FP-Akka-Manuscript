@@ -19,8 +19,11 @@ The second table in \textit{iot} corresponds to the output of the post processor
 \\http://wiki.datakurator.org/wiki/FP-Akka\_User\_Documentation\#Post\_processing
 
 The third table in \textit{iot} is crafted from parts of the second  \textit{iot} table, 
-to provide the data for Table \ref{ExampleQCAssertions} in the main body of the paper.
+to provide the data for Table 
+\ref{ExampleQCAssertions} in the main body of the paper.
 
+The following odd part of the Provenance in the bottom row of Table \ref{ExampleQCAssertions}  is produced by code in FP-Akka and indicates a failure to curate the data. In this case FP-Akka was unable to fill in a value for event date from the atomic fields (startDayOfYear, endDayOfYear, year, month, day) because these values are empty or null in the input data:\\
+\hspace{1in}``dwc:eventDate is not consistent with atomic parts (1985-06-06 <> [0][null][][][])''
 
 
 \end{appendices}
