@@ -12,6 +12,7 @@
 
 
 \documentclass{article}
+%\documentclass{book}
 \usepackage[utf8]{inputenc}
 %\usepackage[english]{babel}
 \usepackage{currfile}
@@ -87,30 +88,32 @@ In the context mentioned above, we could recast Radford's preface as:
 \end{quotation}
 
   This formulation evokes Shewhart's Plan-Do-Check-Act model \citep{shewhart_statistical_1939}, wherein a QC application performs checks and the resulting outcome is a basis for Act. A more modern, explicitly {\em data} quality control model, would phrase this as the Define-Measure-Analyze-Improve meme in \citep{Wang1998}.  
-%{Depending on when Allan submits a paper with analysis of FP-Akka, should perhaps cite here, but agreed not yet...ram}
-% Do need to cite Veiga, A.K., A.M. Saraiva, A.D. Chapman, P.J. Morris, C. Gendreau, D. Schigel, T.J. Robertson  2017 A conceptual framework for quality assessment and management of biodiversity data.  PLOS One https://doi.org/10.1371/journal.pone.0178731
 
-Within the TDWG data quality interest group, a conceptual framework for describing data quality needs, solutions, and reports has been developed 
-%\cite{Veiga2017}.
-\cite{10.1371/journal.pone.0178731}   This framework (FFDQ herein) derives from Wang's approach and provides a formal structure for describing data quality needs, data quality mechanisms, and data quality reports.  The present work relates to the data quality reports of the framework, and can be presented in terms of the framework ** TODO: CITE github projects  **
-
-Kurator-FFDQ doi:10.5281/zenodo.192186 
-
-ffdq-api doi:10.5281/zenodo.891415
 
   Albeit with some resistence \citep{ShetlerDemyth1974}, natural science collections digitization began in earnest in the 1970s (e.g. with SELGEM \citep{SELGEM1971}; ** TODO: CITE NSF collections computerization reports **), with a prescient vision (** TODO: CITE, malacology standard **) of the power for research of data exchanged and aggregated across all collections.  In the 1980s, there was widespread recognition that this long term vision of data interchange needed common understanding of concepts and vocabularies across collections and documents.  Influential models for common concepts emerged in the late 1980s and early 1990s, in particular the ASC model \citep{ASC1992}, and early versions of HISPID \citep{HISPID5} and ABCD \citep{ABCD2015}.  In 1985, the Taxonomic Databases Working Group (TDWG) emerged as a forum for global standardization efforts in the domain \citep{tdwg_tdwg_2007}. (Although the acronym remains in wide use, the organization is a body now named Biodiversity Information Standards (TDWG)).  An emphasis of TDWG in the 1980s and 1990s was the development of controlled vocabularies to promote the exchange and integration of taxonomic data.
   
+Within the TDWG Data Quality Interest Group (BDQ) 
+\cite{BDQ}, 
+a conceptual framework for describing data quality needs, solutions, and reports has been developed. The framework description is described in  
+%\cite{Veiga2017}.
+\cite{10.1371/journal.pone.0178731}   This framework (FFDQ herein) derives from Wang's approach and provides a formal structure for describing data quality needs, data quality mechanisms, and data quality reports.  The present work relates to the data quality reports of the framework, and can be presented in terms of the framework 
+% ** TODO: CITE github projects  **  Bob: let the citation to github suffice
+%Kurator-FFDQ doi:10.5281/zenodo.192186 
+%ffdq-api doi:10.5281/zenodo.891415
 %Not wholly correctly,
+
 Somewhat inaccurately,
-we could characterize this phase of the development to the digitization of natural science collections data as Plan-Do. That is, plan out the designs for information systems and controlled vocabularies for data capture, and do, build them and populate them with data.   An emphasis in the 1990s was to design information systems that limited the ability of data entry personnel to make mistakes \citep{MorrisP2005}.  
+we could characterize this phase of the development to the digitization of natural science collections data as Plan-Do. That is, \emph{plan} the designs for information systems and controlled vocabularies for data capture, and \emph{do}, 
+build them and populate them with data.   An emphasis in the 1990s was to design information systems that limited the ability of data entry personnel to make mistakes
+\citep{MorrisP2005}.  
 Networks developed first for distributed query (e.g. FishGopher \citep[see][p.92]{wiley_biodiversity_2004}, MaNIS \citep{BI7, manishome_2015}, VertNet \citep{VertNetAbout}, HerpNET \citep{herpnet_2016}, FishNet \citep{fishnet_2016}, ORNIS \citep{ornis_2016}\footnote{The data portals of ORNIS, MaNIS, FishNet, and HerpNET have recently been merged with that of VertNet, although the underlying collaborations generally remain intact.}, BioCase \citep{BioCase_2015}).
 These were followed quickly by networks and other tools for data aggregation of natural science collections data (OBIS \citep{OBIS2011}, GBIF \citep{GBIF2015},  iDigBio \citep{iDigBio2015}), along with shifts in the emphasis in digitization strategies from rich data capture to rapid data capture from bulk data sources (e.g. transcription from handwritten ledgers).
 Consequent data growth and availability led to an increasing recognition of data quality issues (e.g. \citep{Frey200616}).
 At the same time introduction of networks of unvouchered observational data (e.g. eBird  \citep{sullivan_ebird:_2009} and \citep{Ahumada2703}) led to even more rapid data growth. 
-With these devlopments has come the understanding that fitness for reuse demands more and more emphasis on data quality control (e.g. \citep{chapman_principles_2005}). Along with classical taxonomic uses, species occurrence data is valuable for research questions related to global change, ecological studies, and agricultural applications (e.g. \citep{brooke_why_2000,Graham2004497}.)  In the face of these changes, the community has shifted further towards Check-Act, checking data quality and acting to improve it (e.g. \citep{eBirdQC}.)  
+With these devlopments has come the understanding that fitness for reuse demands more and more emphasis on data quality control (e.g. \citep{chapman_principles_2005}). Along with classical taxonomic uses, species occurrence data is valuable for research questions related to global change, ecological studies, and agricultural applications (e.g. \citep{brooke_why_2000,Graham2004497}.)  In the face of these changes, the community has shifted further towards Check-Act, \emph{checking} data quality and \emph{acting} to improve it (e.g. \citep{eBirdQC}.)  
 
 TDWG collaborates with the Global Biodiversity Information Facility (GBIF), an international treaty-based organization that provides an open data infrastructure funded by signatory governments. 
-At this writing, GBIF's data portal aggregates almost 625 million occurrence records of over 1.6 million species. These records are aggregated and indexed over 29,000 datasets published by 821 data publishers worldwide. GBIF produces software tools and components, notably several for producing and managing Darwin Core Archives (see \citep{GBIF_DWCA}), that are capable of publishing occurrence data coded to TDWG's Darwin Core (DwC) controlled vocabulary \citep{wieczorek_darwin_2012, tdwg_darwin_2015}. 
+At this writing, GBIF's data portal aggregates almost 900 million occurrence records of over 2.5 million species. These records are aggregated and indexed over 37,235 datasets published by 1,130 data publishers worldwide. GBIF produces software tools and components, notably several for producing and managing Darwin Core Archives (see \citep{GBIF_DWCA}), that are capable of publishing occurrence data coded to TDWG's Darwin Core (DwC) controlled vocabulary \citep{wieczorek_darwin_2012, tdwg_darwin_2015}. 
 These document both specimens and unvouchered observations. The latter are growing faster in number. For example, as of October 11, 2016, GBIF serves nearly four times as many observation records as specimen records, compared to a factor of three a year earlier.
 
 Chronicaling the history of computerization at the Berkeley Museum of Vertrate Zoology, Sunderland \citep{Sunderland2013150} relates that institutions had already noticed that the costs associated with mainframe computing didn't justify systems devoted only to cataloging specimens. Computers would also have to support the storage and discovery of scientific knowledge as well.  
@@ -121,11 +124,11 @@ For over a century, practicing taxonomists have agreed that classification and d
 ``There can be no precise criterion of species. `Species' is a human concept as much as `genus,' and of the same sort.'' (\citep{lutz_variation_1908} p.7.)
 \end{quotation}
 
-For this and other reasons, many artifacts of taxonomic data Quality Control are themselves represented as assertions about fitness for use, not necessarily affirmation or denial of factual correctness. Simple cases are the logical correlation between several data attributes sometimes assembled by the FilteredPush (FP) \citep{filteredpushWeb_2016} project's workflows. For example, in cases where we have access to services giving biographical data of collectors (e.g., the machine-accessible service Harvard Index of Botanists \citep{harvard_university_herbaria_&_libraries_index_2013}, the workflow components may query such services to examine the lifespan of the names of the collectors named in the “dwc:recordedBy” attribute. If the collection date falls outside these lifespans, the workflow can only assert that the biographical and collection data cannot simultaneously be correct. This leaves it to the workflow user to decide which, if either, should be deemed correct and what to do about this. More technical details of the FP workflow components are to be found in \citep{song_towards_2014}.  
+For this and other reasons, many artifacts of taxonomic data Quality Control are themselves represented as assertions about fitness for use, not necessarily affirmation or denial of factual correctness. Simple cases are the logical correlation between several data attributes sometimes assembled by the FilteredPush (FP) \citep{filteredpushWeb_2016} project's workflows. For example, in cases where we have access to services giving biographical data of collectors (e.g., the machine-accessible service Harvard Index of Botanists \citep{harvard_university_herbaria_&_libraries_index_2013}, the workflow components may query such services to examine the lifespan of the names of the collectors named in the “dwc:recordedBy” attribute. If the collection date falls outside those lifespans, the workflow can only assert that the biographical and collection data cannot simultaneously be correct. This leaves it to the workflow user to decide which, if either, should be deemed correct and what to do about it. More technical details of the FP workflow components are to be found in \citep{song_towards_2014}.
 
-\footnote{Following common conventions, if a vocabulary term is defined in DwC we will preface it with “dwc:”.}
+Throughout the paper, following common conventions, if a vocabulary term is defined in DwC we will preface it with ``dwc:''.
 
-In this paper, we are principally concerned with a friendly spreadsheet-based report format aimed at helping data curators and other users evaluate the fitness for use of FilteredPush QC assertions generated by the Java-based application that we call \emph{FP-Akka} ** TODO: CITE **, and related assertions produced by the Kurator-Akka ** TODO: CITE ** application.
+In this paper, we are principally concerned with a friendly spreadsheet-based report format aimed at helping data curators and other users evaluate the fitness for use of FilteredPush QC assertions generated by the Java-based application that we call \emph{FP-Akka} \cite{FilteredPushWiki}, and related assertions produced by the Kurator-Akka ** TODO: CITE ** application.
 
 
 
@@ -151,7 +154,7 @@ FP-Akka presently supports five principal data quality actors which are put toge
 These actors, which we call ``validators,'' are the ScientificNameValidator, the EventDateValidator, the DateValidator
 %\footnote{explain date stuff},
 \footnote{See, e.g. http://rs.tdwg.org/dwc/terms/\#Event for date forms available to the EventDateValidator and http://rs.tdwg.org/dwc/terms/\#Taxon for some data available to the ScientificNameValidator.}
- the GeoReferenceValidator, and the BasisOfRecordValidator.  In terms of the Fittness For Use Framework, these actors assert a mixture of measures, validations, and enhancements.  
+ the GeoReferenceValidator, and the BasisOfRecordValidator.  In terms of the framework FFDQ, these actors assert a mixture of measures, validations, and enhancements.  
 %These actors may have unique or multiple  Darwin Core attributes in appropriately coded occurrence data, e.g. Darwin Core Archives 
 The validators act on appropriately coded occurrence data, e.g. Darwin Core Archives 
 (\citep{robertson_dwca_2015}) 
@@ -194,9 +197,9 @@ The data quality control logic (in FP-KurationServices classes as shown in Figur
 
 FFDQ expands upon this set to provide a richer set of outcomes classified by assertion type (validation, measure, amendment). Additionally, since the framework is focused more on the individual assertions rather than the actor logic as a whole, monolithic actors can be broken down into a series of assertions or tests, the dependencies between these tests and the test outcomes.
 
-In FFDQ the value "CORRECT" corresponds to a result, rather than a status, of "COMPLIANT" or "NON\_COMPLIANT" for a Validation, "FILLED\_IN" and "CURATED" are associated with Amendments. Two additional outcomes are included for Measures, "COMPLETE" or "INCOMPLETE" and the "UNABLE\_DETERMINE\_VALIDITY" and "UNABLE\_CURATE" are treated as the assertion run status along with "NOT\_RUN" and "AMBIGUOUS". This expands upon the original set of outcomes by defining a more structured run result with an associated status.
+In FFDQ the value ``CORRECT'' corresponds to a result, rather than a status, of ``COMPLIANT'' or ``NON\_COMPLIANT'' for a Validation, ``FILLED\_IN'' and ``CURATED'' are associated with Amendments. Two additional outcomes are included for Measures, ``COMPLETE'' or ``INCOMPLETE'' and the ``UNABLE\_DETERMINE\_VALIDITY'' and ``UNABLE\_CURATE'' are treated as the assertion run status along with ``NOT\_RUN'' and ``AMBIGUOUS'' This expands upon the original set of outcomes by defining a more structured run result with an associated status.
 
-\footnote{See also Table \ref{ExampleQCAssertions} for examples derived from the postprocessor.}.
+
 An assertion that a value is correct is a claim that the data quality control logic found no inconsistency between the data presented and any oracles that it consulted.  
 This may mean that the data was validated, as in the case of the ScientificNameValidator finding a single exact match for a scientific name string and authorship in IPNI, and being able to assert IPNI's LSID for the matching IPNI nomenclatural record.
 CORRECT may also mean that the data was merely consistent, as in the case of the collecting event DateValidator asserting that a particular collection date in dwc:eventDate falls within the lifespan of the collector in dwc:recordedBy as asserted by a biographical record for a person who's name matches the string found in dwc:recordedBy.  The collecting event date could still be off by days or months or years, but the data quality code was not able to detect a problem.
@@ -223,12 +226,13 @@ column in Table \ref{ExampleQCAssertions}. %\ref{FPAkkaOutcomes})
 These labels capture the gist of the outcome (e.g. ``CORRECT'' carries  ``no change needed; looks good to us'', where the ``good to us'' has the implication 
 that the result may not be correct.)
 
-The entries in Table \ref{ExampleQCAssertions} were derived from actual data produced by FP-Akka applied to several specimen records at the Harvard Museum of Comparative Zoology.
+The entries in Table \ref{ExampleQCAssertions} were derived\footnote{See also Table \ref{ExampleQCAssertions} for examples derived from the postprocessor} from actual data produced by FP-Akka applied to several specimen records at the Harvard Museum of Comparative Zoology.
 Curation status outcome phrases like these may be adequate for an analytical user of a large data set to include/exclude records that fit particular data quality criteria.  They are, however, inadequate for a data curator assessing whether to apply the change proposed along with an outcome of CURATED to the database of record, or whether or not to expend effort to research further data needed to resolve a record with an outcome of UNABLE\_CURATE.  For these users, the details of the provenance in the list of sources consulted and the chain of assertions in the curation comment is critical.  
 
 In Table  \ref{ExampleQCAssertions}
 we illustrate examples of QC assertions extracted from a spreadsheet produced from an actual dataset at the Harvard Museum of Comparative Zoology (MCZ)
-\footnote{See Appendix MCZData.} processed by FP-Akka and subjected to the Java postprocessor that turns the JSON into a spreadsheet. 
+\footnote{See Appendix \ref{appendix1}} 
+processed by FP-Akka and subjected to the Java postprocessor that turns the JSON into a spreadsheet. 
 The extractions are from several of the six sheets in the outputs of  the postprocessor runs
 % against FP-Akka applied to three datasets given as Darwin Core Archives. 
 The rows of Table \ref{ExampleQCAssertions} are color coded\footnote{The precise color may vary slightly depending on the spreadsheet application in use and may find slight differences from the colors rendered in this paper. This is because the postprocessor is based on the Apache POI-HSSF platform (https://poi.apache.org/spreadsheet/index.html) for access to Microsoft Excel Format Files. POI-HSSF allows the spreadsheet reading program to choose the closest supported color to that requested by the postprocessor program.} to signify one of the five outcome types as described in the next section. For ease of human consumption, each of the outcome types is rendered in natural language. 
@@ -238,8 +242,6 @@ The rows of Table \ref{ExampleQCAssertions} are color coded\footnote{The precise
 %\footnote {``Atomic fields for scientific name are blank, nothing to compare with scientific name. \textbar No match found in Catalog of Life. \textbar  \textbar The provided name: Rubus laciniatus has a match in the GlobalNames Resolver \textbar No match found in Catalog of Life. \textbar Fail to access GNI service \textbar Got a valid result from GBIF checklistbank Backbone \textbar The original SciName and Authorship are curated \textbar  Authorship: Author Strongly Dissimilar Similarity: 0.42857142857142855  can't construct eventDate from atomic fields: string casting error\textbar eventDate:2014-7-1 has been formatted to ISO format: 2014-07-01.\textbar Unable to find collector J. Kahanpää in Harvard list of botanists.\textbar Unable to get the Life span data of collector:J. Kahanpää\textbar Unable to lookup a lifespan for the collector J. Kahanpää''}
 
 \include{ExampleQCAssertions} %Table
-
-
 
 The Provenance column in Table \ref{ExampleQCAssertions} provides machine-produced provenance of the workflow. (It is denoted ``Curation Comment'' in the JSON rendering.) 
  Notice that in most rows, the provenance trace comprises several issues, separated by vertical bars.  This arises from the presence in the JSON of a single Curation Comment element in the interface between the actor internals and the actor.  The internal data quality control logic appends assertions to the Curation Comment as it works through the validation process for the provided elements of a record. 
@@ -261,26 +263,26 @@ That said, if FP-Akka were examining multiple records at once, it might well gle
 \label{fig:actorlogic}
 \end{figure}
 
- FP-Akka can consult one or more external and local services, depending on the workflow consulted and the configuration parameters provided. The list of services consulted in the response for each actor for each record indicates which services were invoked. Services include those below, although the release current at this writing, FP-Akka 1.6.0 \citep{FPA_160} does not consult them all. \textbf{(RAM: PERHAPS SPECIFY WHICH IN AN APPENDIX?)}
+ FP-Akka can consult one or more external and local services, depending on the workflow consulted and the configuration parameters provided. The list of services consulted in the response for each actor for each record indicates which services were invoked. Services include those below, although the release current at this writing, FP-Akka 1.6.0 \citep{FPA_160} does not consult them all. 
+%\textbf{(RAM: PERHAPS SPECIFY WHICH IN AN APPENDIX?)}
 \begin{itemize}
   \item Tulane Geolocate http://www.museum.tulane.edu/geolocate/
   \item Scientific name services of Index Fungorum (IF) http://www.indexfungorum.org/
   \item The nomenclatural service from the International Plant Names Index (IPNI) http://www.ipni.org/
-  \item Scientific name and taxonomy services from GBIF http://api.gbif.org/v1  [We consult the BackboneTaxonomy, the code can invoke any names dataset in GBIF's checklist bank, but we currently only implement the Backbone Taxonomy
-  \item A service of our own, ``Collecting Event Outlier Identification Service'', which determines whether sequential collection events by the same collector on the same day are  unreasonably far apart geographically suggesting that there is an issue with the event time or location [Not currently enabled, this also isn't a service, but was code for comparision within the same dataset]
-  \item A service of our own providing floral phenology data from the Flora of North America  (FNA) \citep{fna_flora_2008} in order to compare  the provided occurrence event date to the FNA flowering date range for records for which the flowering state if is recorded (and the occurrence Locality is in North America.) [Not currently enabled]
-  \item Scientific name services of the Catalog of Life (COL),
+  \item Scientific name and taxonomy services from GBIF http://api.gbif.org/v1.  (We consult the BackboneTaxonomy, the code can invoke any names dataset in GBIF's checklist bank, but we currently only implement the Backbone Taxonomy)
+  \item A service of our own, ``Collecting Event Outlier Identification Service'', which determines whether sequential collection events by the same collector on the same day are  unreasonably far apart geographically, suggesting that there is an issue with the event time or location (Not currently enabled; nor actually a service, but is code for comparision within the a single dataset)
+  \item A service of our own providing floral phenology data from the Flora of North America  (FNA) \citep{fna_flora_2008} in order to compare  the provided occurrence event date to the FNA flowering date range for records for which the flowering state if is recorded (and the occurrence Locality is in North America.) (Not currently enabled)
+  \item Scientific name services of the Catalog of Life (COL)
   \item Scientific name services from the World Register of Marine Species (WoRMS) http://marinespecies.org/, 
-  \item Scientific name services from  GlobalNames [ZooBank isn't turned on in current implementation]. Citations needed. Maybe a complete table belongs in the paper?
-  \item GNI as a failover service.
+  \item Scientific name services from  GlobalNames (ZooBank isn't turned on in current implementation)
+  \item GNI as a failover service
   \item An agent first/last date service from the Harvard List of Botanists 
   \item An agent first/last date service we have added to Symbiota.
 \end{itemize}
-
-%moved fro beginning of next section in QC36
+%should check all acronyms cited?
 In Kepler-Kuration, users were able to examine the curation status for an actor acting upon a record, examine a brief comment on that status, and build a detailed 
 %retrospective 
-%ram says: there is no merit to mentioning "retro" vs prospective provenance
+%ram says: there is no merit to mentioning ``retro'' vs prospective provenance
 provenance graph of the flow of data through the workflow \citep{dou_kurator_2012}.   
 We observed that natural science collection managers and other biodiversity users of the workflow found the provenance graph too detailed about the Kepler provenance.  They likewise found the very brief report added as columns to a single spreadsheet row for each record in a data set was  not rich enough in domain assertions.  We thus moved to a much more detailed per-record, per-actor data structure and began expanding the assertions made by the QC code in the course of the analysis.  Presentation of this richer QC report presented the challenge described next, along with a solution modeled by a spreadsheet.
 
@@ -292,7 +294,7 @@ Reports expressed using FFDQ expand the single row per record format to include 
 
 FP-Akka is a Java-based workflow system to produce QC assertions, along with provenance for them. 
 An intermediate structured data report is normally serialized as JSON.  This format conveniently supports data embedded in JavaScript data for web applications, but not all interested parties have facilities, need, or desire for a web-based visualization of  QC assertions. Furthermore, whereas JSON is rather programmer- and machine-friendly, it is hardly so for domain scientists.  
-Appendix NN discusses a complete small example of the JSON that is produced from a DwCa archive generated from a published taxonomic paper.
+Appendix \ref{appendix1} discusses a complete small example of the JSON that is produced from a DwCa archive generated from a published taxonomic paper.
 FP-Akka can stand alone, running on any machine that can run Java programs.  A second standalone Java postprocessor program can convert the JSON output to a spreadsheet conforming to the Microsoft Excel xls format. The result is the focus of this paper.  The spreadsheet contains cells showing the proposed QC suggestions or indications that FP-Akka cannot offer anything.  The corresponding cells are color coded to signify the nature of the outcome.  For each record, data attributes that have been examined and found fit (as determined by the workflow) are in green cells, but even for these, the provenance for this finding is reported. This spreadsheet allows data managers or users to evaluate fitness for use and take action with their own tools, no matter whether or not the FP-Akka JSON output can be consumed by their data management or scientific application tools.
 
 
@@ -304,14 +306,13 @@ FP-Akka can stand alone, running on any machine that can run Java programs.  A s
 
 \section{Continuous Quality Control, Speed and Parallelization}
 %\textbf{Bob melded the Continuous QC and the Speed and parallelization sections. }
-Taxon or occurrence data is never final. Providing for Quality Control is a continuous ongoing enterprise. Natural science collections are living and breathing libraries of our knowledge of biological diversity.  Scientific names change based on emerging science and according to nomenclatural rules.  But other kinds of ongoing change arise due to curatorial practices (e.g. community adoption of data serialization standards), funding sources (e.g. for digitization of dark data or for community georeferencing of localities) and yet others arise from modern software architecture practices required for big data sets, particularly those increasing rapidly in size, such as social media data (e.g.\citep{Cai2015, Immonen2015} ) and sensor data (e.g. \citep{Campbell01072013})
+Taxon or occurrence data is never final. Providing for Quality Control is a continuous ongoing enterprise. Natural science collections are living and breathing libraries of our knowledge of biological diversity.  Scientific names change based on emerging science and according to nomenclatural rules.  But other kinds of ongoing changes arise due to curatorial practices (e.g. community adoption of data serialization standards), funding sources (e.g. for digitization of dark data or for community georeferencing of localities). Yet others arise from modern software architecture practices required for big data sets, particularly those increasing rapidly in size, such as social media data (e.g.\citep{Cai2015, Immonen2015} ) and sensor data (e.g. \citep{Campbell01072013})
 
-An ongoing issue faces users of FP-Akka in the form of some non-deterministic record ordering.  Mainly due to parallelization and variation in response time of remote services, production of output records complete in an order not perfectly correlated to their input order. Consequently,  two subsquent executions of FP-Akka may not have the same output order. Moreover, a remote service might timeout differently in the two, and the results may lead to different assertions.  Indeed, even without timeout, the remote service may have simply offered changed data, possibly also resulting in different FP-Akka output assertions.  This is not as grim as it seems, because many large datasets suffer from systematic errors, e.g. collector name misspellings, latitude and longitude reversed, date ambiguities such as mentioned earlier, etc.  Thus, an input set of several hundred thousand occurrences may result in 10,000 QC assertions, many of which can be fixed with only dozens of curations. Such situations may be common in early stages of specimen digitization projects.
+An ongoing issue faces users of FP-Akka in the form of some non-deterministic record ordering.  Mainly due to parallelization and variation in response time of remote services, production of output records can complete in an order not perfectly correlated to their input order. Consequently,  two subsquent executions of FP-Akka may not have the same output order. Moreover, a remote service might timeout differently in the two, and the results may lead to different assertions.  Indeed, even without timeout, the remote service may have simply offered changed data, possibly also resulting in different FP-Akka output assertions.  This is not as grim as it seems, because many large datasets suffer from systematic errors, e.g. collector name misspellings, latitude and longitude reversed, date ambiguities such as mentioned earlier, etc.  Thus, an input set of several hundred thousand occurrences may result in 10,000 QC assertions, many of which can be fixed with only dozens of curations. Such situations may be common in early stages of specimen digitization projects.
 
-A critical next step for the Kurator project is rendering data quality reports to show unique instances of errors, where unique instances often correspond with values in a single value in a row in a relational database table – a single value that has been expanded out to multiple repeating values in the exported flat DarwinCore view of the data.  
-
-Using FFDQ, a report like this could be modeled as a MultiRecord (Dataset) level assertion. Another example using FFDQ is a report that shows MultiRecord level Measures reporting on the percentage of records that satisfy some set of Single Record validations before and after the amendments stage.  
-In FP-Akka, our reports were compilations of record-level (Single Record in the FFDQ sense) assertions, and dataset level assertions are treated as statistical compilations over those record-level assertions.  FFDQ is more general and richer, in that it can describe dataset level measures that aggregate over tests on single records.  
+A critical next step for the Kurator project is to render data quality reports to show unique instances of errors, where unique instances often correspond with values in a single value in a row in a relational database table – a single value that has been expanded out to multiple repeating values in the exported flat DarwinCore view of the data.
+Using FFDQ, a report like this could be modeled as a multi-record, i.e. dataset, level assertion. Another example using FFDQ is a report that shows multi-record level measures reporting on the percentage of records that satisfy some set of single record validations before and after an amendment stage in a workflow.  
+In FP-Akka, our reports were compilations of record-level (single record in the FFDQ sense) assertions, and dataset level assertions are treated as statistical compilations over those record-level assertions.  FFDQ is more general and richer, in that it can describe dataset level measures that aggregate over tests on single records.  
 
 % David has replacement proposal for this:
 %At this writing we are refactoring FP-Akka to  exploit the Akka framework in full.  When that is complete, users of FP-Akka can exploit inexpensive cloud computing using hundreds of computer cores and expect hundreds-fold speedup in computing.  This is especially true because the business logic of FP-Akka is small and fast, whether the data is small or big.   
@@ -372,7 +373,7 @@ $cos(458.797)$ hence was driven negative and so was the term containing that fac
 A key point in this realization of where defects may lie is expectation management for the end users - things we report as errors may be defects in their data, defects in our code, or defects in the authorities our workflows are consulting.  Users to whom the data quality report is presented without this understanding may observe what they percieve as errors in the data quality report. They might dismiss the reporting framework as defective, unless they understand that their data may expose errors in the framework that the developers can readily fix, or that the errors are in the external authoritative sources that the software consulted.  
 
 FFDQ provides more descriptive metadata about the tests performed through the concepts Specification, Criteria, Enhancement and Dimension. This information can be included or linked to results in the spreadsheet to provide additional background information about the expected behavior of test. Also related is work done to standardize tests since the  assertions can be linked to a standard definition of tests that users will be familiar with.
-In FP-Akka, these metadata are buried in (marginally) human readable form in curation comments, rather than being exposed as metadata that can easily be tied to elements in an report.  FFDQ allows for a report to be provided about the tests themselves.  A typical user question is "what is this test doing", or "what fields are required for this test".  FP-Akka's large and complex actors bury this information in comments.  FFDQ allows provision of this information as queriable test metadata.
+In FP-Akka, these metadata are buried in (marginally) human readable form in curation comments, rather than being exposed as metadata that can easily be tied to elements in an report.  FFDQ allows for a report to be provided about the tests themselves.  A typical user question is ``what is this test doing'' or ``what fields are required for this test''.  FP-Akka's large and complex actors bury this information in comments.  FFDQ allows provision of this information as queriable test metadata.
 
 \section{Acknowledgements}
 The SCAN curators and participants in Kurator workshops who have reviewed FP-Akka QC reports on their data.  
